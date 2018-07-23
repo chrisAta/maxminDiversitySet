@@ -17,6 +17,11 @@ if __name__ == '__main__':
 
     set += [min[0], min[1]]
 
-    set = data_prep.min_max_alg(dist, headings, set, k)
+    # set += [np.random.randint(0,241)]
+    #
+    # set += [np.random.randint(0,241)]
+
+
+    set = data_prep.greedy_min_max_alg(dist, headings, set, k)
 
     print [headings[x] for x in set]

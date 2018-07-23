@@ -28,7 +28,7 @@ def get_matrix_min(dist):
 
     return min_arr[0]
 
-def min_max_alg(dist, headings, set, k):
+def greedy_min_max_alg(dist, headings, set, k):
 
         while len(set) < k:
 
@@ -39,6 +39,14 @@ def min_max_alg(dist, headings, set, k):
 
                 if i in set:
                     continue
+
+                rand = np.random.randint(0,10000)
+
+                if rand < 3:
+
+                    print 'RANDOM ADDITION: ' + str(rand)
+                    min_ind = i
+                    break
 
                 max_val = np.nanmax(dist[i])
 
