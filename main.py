@@ -1,8 +1,22 @@
-from data_prep import read_matrix
+import numpy as np
+import data_prep
 
 if __name__ == '__main__':
 
-    (dist, headings) = read_matrix('./temp_ssn_identities.npy', 'temp_ssn_headings.json')
+    set = []
 
-    print dist
-    print headings
+    k = 60
+
+    dist = data_prep.initialise_matrix('./temp_ssn_identities.npy')
+
+    headings = data_prep.initialise_headings('temp_ssn_headings.json')
+
+    min = data_prep.get_matrix_min(dist)
+
+    print "MIN: %s-%s" % (headings[min[0]], headings[min[1]])
+
+    set += [min[0], min[1]]
+
+    set = data_prep.min_max_alg(dist, headings, set, k)
+
+    print [headings[x] for x in set]
