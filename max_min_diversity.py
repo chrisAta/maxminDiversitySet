@@ -43,18 +43,8 @@ def compute_diverse_set(dist_file, heading_file, k, stochastic=False):
     dist = data_prep.initialise_matrix(dist_file)
 
     headings = data_prep.initialise_headings(heading_file)
-    #
-    # dist = data_prep.initialise_matrix('./temp_ssn_identities.npy')
-    #
-    # headings = data_prep.initialise_headings('temp_ssn_headings.json')
-    #
-    # dist = data_prep.initialise_matrix('./temp_csn_identities.npy')
-    #
-    # headings = data_prep.initialise_headings('temp_csn_headings.json')
 
     min = data_prep.get_matrix_min(dist)
-
-    print "MIN: %s-%s" % (headings[min[0]], headings[min[1]])
 
     set += [min[0], min[1]]
 
@@ -62,9 +52,10 @@ def compute_diverse_set(dist_file, heading_file, k, stochastic=False):
     #
     # set += [np.random.randint(0,241)]
 
-
     set = greedy_min_max_alg(dist, headings, set, k, stochastic)
 
     set = sorted([headings[x] for x in set])
 
     print set
+
+    return set
