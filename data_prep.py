@@ -43,11 +43,12 @@ def greedy_min_max_alg(dist, headings, set, k):
 
                 rand = np.random.randint(0,10000)
 
-                if rand < 3:
-
-                    print 'RANDOM ADDITION: ' + str(rand)
-                    min_ind = i
-                    break
+                #COMMENT THIS OUT FOR DETERMINISTIC
+                # if rand < 3:
+                #
+                #     print 'RANDOM ADDITION: ' + str(rand)
+                #     min_ind = i
+                #     break
 
                 max_val = np.nanmax(dist[i])
 

@@ -7,9 +7,13 @@ if __name__ == '__main__':
 
     k = 60
 
-    dist = data_prep.initialise_matrix('./temp_csn_identities.npy')
+    dist = data_prep.initialise_matrix('./temp_ssn_identities.npy')
 
-    headings = data_prep.initialise_headings('temp_csn_headings.json')
+    headings = data_prep.initialise_headings('temp_ssn_headings.json')
+    #
+    # dist = data_prep.initialise_matrix('./temp_csn_identities.npy')
+    #
+    # headings = data_prep.initialise_headings('temp_csn_headings.json')
 
     min = data_prep.get_matrix_min(dist)
 
@@ -24,4 +28,6 @@ if __name__ == '__main__':
 
     set = data_prep.greedy_min_max_alg(dist, headings, set, k)
 
-    print [headings[x] for x in set]
+    set = sorted([headings[x] for x in set])
+
+    print set
