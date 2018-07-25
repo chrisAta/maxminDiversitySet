@@ -1,7 +1,7 @@
 import numpy as np
 import data_prep
 
-def greedy_min_max_alg(dist, headings, set, k):
+def greedy_min_max_alg(dist, headings, set, k, stochastic=False):
 
         while len(set) < k:
 
@@ -15,12 +15,11 @@ def greedy_min_max_alg(dist, headings, set, k):
 
                 rand = np.random.randint(0,10000)
 
-                #COMMENT THIS OUT FOR DETERMINISTIC
-                # if rand < 3:
-                #
-                #     print 'RANDOM ADDITION: ' + str(rand)
-                #     min_ind = i
-                #     break
+                if stochastic and rand < 3:
+
+                    print 'RANDOM ADDITION: ' + str(rand)
+                    min_ind = i
+                    break
 
                 max_val = np.nanmax(dist[i])
 
@@ -37,7 +36,7 @@ def greedy_min_max_alg(dist, headings, set, k):
 
 
 
-def compute_diverse_set(dist_file, heading_file, k):
+def compute_diverse_set(dist_file, heading_file, k, stochastic=False):
 
     set = []
 
@@ -64,7 +63,7 @@ def compute_diverse_set(dist_file, heading_file, k):
     # set += [np.random.randint(0,241)]
 
 
-    set = greedy_min_max_alg(dist, headings, set, k)
+    set = greedy_min_max_alg(dist, headings, set, k, stochastic)
 
     set = sorted([headings[x] for x in set])
 
