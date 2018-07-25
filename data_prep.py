@@ -1,4 +1,5 @@
 import numpy as np
+import pandas
 import json
 
 def initialise_matrix(dist_file):
