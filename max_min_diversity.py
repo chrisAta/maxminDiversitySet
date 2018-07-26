@@ -13,20 +13,30 @@ def greedy_min_max_alg(dist, headings, set, k, stochastic=False):
                 if i in set:
                     continue
 
-                rand = np.random.randint(0,10000)
+                # rand = np.random.randint(0,10000)
+                #
+                # if stochastic and rand < 3:
+                #
+                #     print 'RANDOM ADDITION: ' + str(rand)
+                #     min_ind = i
+                #     break
 
-                if stochastic and rand < 3:
+                max_val = 0
 
-                    print 'RANDOM ADDITION: ' + str(rand)
-                    min_ind = i
-                    break
+                # print [dist[i,j] for j in set]
 
-                max_val = np.nanmax(dist[i])
+                for j in set:
+                    if dist[i,j] > max_val:
+                        # print dist[i,j]
+                        max_val = dist[i,j]
+                # print 'YAY'
+                # max_val = np.nanmax(dist[i])
 
                 if max_val < min_val:
 
                     min_val = max_val
                     min_ind = i
+                    # print min_val
 
             print "ADDED %s" % (headings[min_ind])
 
