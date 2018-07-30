@@ -38,7 +38,7 @@ def greedy_min_max_alg(dist, headings, set, k, stochastic=False):
                     min_ind = i
                     # print min_val
 
-            print "ADDED %s" % (headings[min_ind])
+            # print "ADDED %s" % (headings[min_ind])
 
             set += [min_ind]
 
@@ -66,6 +66,6 @@ def compute_diverse_set(dist_file, heading_file, k, stochastic=False):
 
     set = sorted([headings[x] for x in set])
 
-    print set
+    # print set
 
     return set
