@@ -64,8 +64,16 @@ def compute_diverse_set(dist_file, heading_file, k, stochastic=False):
 
     set = greedy_min_max_alg(dist, headings, set, k, stochastic)
 
+    binary = []
+
+    for i in range(0, len(headings)):
+        if i in set:
+            binary += [1]
+        else:
+            binary += [0]
+
     set = sorted([headings[x] for x in set])
 
     # print set
 
-    return set
+    return set, binary
